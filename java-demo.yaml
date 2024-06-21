@@ -13,7 +13,7 @@ spec:
         app: java-demo
     spec:
       containers:
-      - image: fstab/java-demo
+      - image: containerregistry1.azurecr.io/sampletest:655
         name: java-demo
         ports:
         - containerPort: 8080
