@@ -1,10 +1,28 @@
-name: Test Workflow
+name: Test Pip Installation
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Upgrade pip
+        run: pip install --upgrade pip
+
+      - name: Install pip-tools
+        run: pip install pip-tools
+
+      - name: Compile requirements
+        run: pip-compile --output-file=requirements.txt requirements.txt
+
+      - name: Install from requirements.txt
+        run: pip install -r requirements.txt
