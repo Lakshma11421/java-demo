@@ -3,7 +3,8 @@ name: Python CI
 on:
   push:
     branches:
-      - master  # Or the branch you want to trigger the workflow on
+      - master  # Trigger on push to the master branch
+  workflow_dispatch:  # Manually trigger workflow via GitHub UI
 
 jobs:
   build:
@@ -25,5 +26,5 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install pip-tools
-        pip-compile --output-file=requirements.txt ./requirements.txt  # Use relative path if required
+        pip-compile --output-file=requirements.txt ./requirements.txt  # Ensure path to requirements.txt is correct
         pip install -r requirements.txt
