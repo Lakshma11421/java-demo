@@ -1,28 +1,29 @@
-name: Test Pip Installation
+name: Python CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - master  # Or the branch you want to trigger the workflow on
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2  # Checks out the repository
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
 
-      - name: Upgrade pip
-        run: pip install --upgrade pip
+    - name: List files in the repo  # Debugging step to list files
+      run: ls -R
 
-      - name: Install pip-tools
-        run: pip install pip-tools
-
-      - name: Compile requirements
-        run: pip-compile --output-file=requirements.txt requirements.txt
-
-      - name: Install from requirements.txt
-        run: pip install -r requirements.txt
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install pip-tools
+        pip-compile --output-file=requirements.txt ./requirements.txt  # Use relative path if required
+        pip install -r requirements.txt
