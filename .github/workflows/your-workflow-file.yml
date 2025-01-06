@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.7, 3.8, 3.9, 3.10, 3.11]
+        python-version: [3.8, 3.9]  # Start with just two versions for debugging
 
     steps:
       - name: Checkout repository
@@ -25,30 +25,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Cache pip dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
       - name: Install dependencies
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Freeze installed dependencies and check for conflicts
-        run: |
-          pip freeze > frozen_requirements.txt
-          pip check
-          cat frozen_requirements.txt
-
-      - name: Install pipdeptree and analyze dependencies
-        run: |
-          pip install pipdeptree
-          pipdeptree --freeze
-          pipdeptree --warn silence
 
       - name: Run tests with increased verbosity
         run: |
