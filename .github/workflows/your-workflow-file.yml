@@ -3,7 +3,7 @@ name: Python CI
 on:
   push:
     branches:
-      - main  # Or the branch you want to trigger the action on
+      - master  # Or the branch you want to trigger the action on
 
 jobs:
   build:
