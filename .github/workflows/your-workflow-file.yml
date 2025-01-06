@@ -29,7 +29,6 @@ jobs:
 
     - name: Compile the requirements and generate a locked, conflict-free requirements.txt
       run: |
-        # Compile the requirements and generate a locked, conflict-free requirements.txt
         pip-compile --output-file=requirements.txt ./requirements.txt  # Path to your original requirements file
         cat requirements.txt  # Debugging step to ensure correct requirements are generated
 
