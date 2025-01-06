@@ -105,6 +105,8 @@ opencensus
 opencensus-context
 opencensus-ext-azure
 packaging
+package1==1.0.0
+package2==2.3.4
 pandas>=1.5.0
 partd
 pathspec
