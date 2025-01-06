@@ -3,42 +3,45 @@ name: Python Compatibility Check
 on:
   push:
     branches:
-      - main  # Trigger the action on push to the main branch
+      - main
   pull_request:
     branches:
-      - main  # Trigger the action on pull request to the main branch
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        python-version: [3.7, 3.8, 3.9, 3.10]  # Testing across multiple Python versions
+        python-version: [3.7, 3.8, 3.9, 3.10]
 
     steps:
-      # Step 1: Checkout the code
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Step 2: Set up Python environment for each version in the matrix
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
 
-      # Step 3: Install dependencies from `requirements.txt`
       - name: Install dependencies
         run: |
-          pip install --upgrade pip  # Upgrade pip to latest version
-          pip install -r requirements.txt  # Install dependencies from requirements.txt
+          pip install --upgrade pip
+          pip install -r requirements.txt
 
-      # Step 4: Check for any dependency conflicts
-      - name: Check package compatibility
+      - name: Freeze installed dependencies and check for conflicts
         run: |
-          pip check  # This will check if there are any conflicting packages
+          pip freeze > frozen_requirements.txt
+          pip check
+          cat frozen_requirements.txt
 
-      # Step 5: Run tests (replace with your testing command if necessary)
+      - name: Install pipdeptree and analyze dependencies
+        run: |
+          pip install pipdeptree
+          pipdeptree --freeze
+          pipdeptree --warn silence
+
       - name: Run tests
         run: |
-          pytest  # Replace with your testing command (e.g., `pytest` or `python -m unittest`)
+          pytest
