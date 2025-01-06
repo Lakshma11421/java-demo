@@ -11,10 +11,10 @@ azure-mgmt-keyvault
 azure-mgmt-resource
 azure-mgmt-storage>=19.0.0
 azure-storage-queue
-azureml-automl-core>=1.9.0  # Ensuring compatibility with Python 3.9
+azureml-automl-core>=1.9.0
 azureml-automl-runtime
-azureml-core>=1.0.0  # Ensure compatibility with Azure ML version 1.9.x
-azureml-dataprep==1.9.3  # Fixed version for Python 3.9 compatibility
+azureml-core==1.0.0  # Ensure compatibility with Azure ML version 1.0.0
+azureml-dataprep==1.9.3
 azureml-dataprep-native
 azureml-dataprep-rslex
 azureml-dataset-runtime==1.0.0
@@ -30,11 +30,11 @@ azureml-train-automl-runtime
 azureml-train-core
 azureml-train-restclients-hyperdrive
 azureml-training-tabular
-# Update below for compatibility:
+# Additional libraries with versions compatible with Python 3.9
 backports.tempfile
 backports.weakref
 bokeh
-boto3  # updated version
+boto3
 cachetools
 certifi
 cffi
@@ -96,7 +96,7 @@ msrest
 msrestazure
 ndg-httpsclient
 numba
-numpy>=1.24.0
+numpy==1.24.0
 onnx
 onnxconverter-common
 onnxmltools
@@ -131,7 +131,7 @@ rsa
 ruamel.yaml
 ruamel.yaml.clib
 s3transfer
-scikit-learn>=1.1.1
+scikit-learn==1.1.1
 scipy>=1.9.3
 SecretStorage
 shap
