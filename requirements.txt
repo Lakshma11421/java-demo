@@ -11,13 +11,13 @@ azure-mgmt-keyvault
 azure-mgmt-resource
 azure-mgmt-storage>=19.0.0
 azure-storage-queue
-azureml-automl-core
+azureml-automl-core==1.9.0
 azureml-automl-runtime
 azureml-core
-azureml-dataprep==5.3.2
+azureml-dataprep>=1.9.0,<1.10.0
 azureml-dataprep-native
 azureml-dataprep-rslex
-azureml-dataset-runtime
+azureml-dataset-runtime==1.0.0
 azureml-defaults
 azureml-inference-server-http
 azureml-interpret
