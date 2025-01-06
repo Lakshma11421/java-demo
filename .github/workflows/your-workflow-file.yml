@@ -19,12 +19,15 @@ jobs:
       with:
         python-version: '3.9'
 
+    - name: Upgrade pip to a compatible version
+      run: |
+        pip install --upgrade pip==23.1  # Enforce pip version 23.1
+
     - name: List files in the repo  # Debugging step to list files
       run: ls -R
 
     - name: Install pip-tools
       run: |
-        pip install --upgrade pip
         pip install pip-tools
 
     - name: Compile the requirements and generate a locked, conflict-free requirements.txt
