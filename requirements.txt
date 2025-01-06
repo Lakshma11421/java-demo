@@ -11,7 +11,7 @@ azure-mgmt-keyvault
 azure-mgmt-resource
 azure-mgmt-storage>=19.0.0
 azure-storage-queue
-azureml-automl-core>=1.9.0
+azureml-automl-core==1.58.0
 azureml-automl-runtime
 azureml-core>=1.1.0  # Ensure compatibility with Azure ML version 1.0.0
 azureml-dataprep>=5.1.0a,<5.2.0a
