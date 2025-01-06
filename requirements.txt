@@ -14,7 +14,7 @@ azure-storage-queue
 azureml-automl-core>=1.9.0
 azureml-automl-runtime
 azureml-core>=1.1.0  # Ensure compatibility with Azure ML version 1.0.0
-azureml-dataprep==1.9.3
+azureml-dataprep>=1.10.0
 azureml-dataprep-native
 azureml-dataprep-rslex
 azureml-dataset-runtime>=1.9.0,<2.0.0
