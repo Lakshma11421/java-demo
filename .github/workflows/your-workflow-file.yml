@@ -23,6 +23,11 @@ jobs:
       run: |
         pip install --upgrade pip==23.1  # Enforce pip version 23.1
 
+    - name: Set up Virtual Environment
+      run: |
+        python -m venv venv  # Create a virtual environment
+        source venv/bin/activate  # Activate the virtual environment
+
     - name: List files in the repo  # Debugging step to list files
       run: ls -R
 
@@ -38,3 +43,11 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
+
+    - name: Check for dependency conflicts
+      run: |
+        pip check  # Check for any dependency conflicts after installation
+
+    - name: Verify installed packages
+      run: |
+        pip freeze  # Log the installed versions for debugging
