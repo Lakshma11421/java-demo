@@ -17,7 +17,7 @@ azureml-core>=1.1.0  # Ensure compatibility with Azure ML version 1.0.0
 azureml-dataprep==1.9.3
 azureml-dataprep-native
 azureml-dataprep-rslex
-azureml-dataset-runtime==1.9.0
+azureml-dataset-runtime==1.2.0
 azureml-defaults
 azureml-inference-server-http
 azureml-interpret
@@ -47,8 +47,7 @@ contextlib2
 contextvars
 cryptography
 Cython
-dask>=2024.0.0,<2025.0.0
-databricks-cli
+dask>=2023,<2025
 dataclasses
 dill
 distributed
