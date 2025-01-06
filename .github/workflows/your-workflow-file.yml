@@ -19,17 +19,20 @@ jobs:
       with:
         python-version: '3.9'
 
+    - name: List files in the repo  # Debugging step to list files
+      run: ls -R
+
     - name: Install pip-tools
       run: |
         pip install --upgrade pip
-        pip install pip-tools  # Install pip-tools
+        pip install pip-tools
 
-    - name: Compile requirements
+    - name: Compile the requirements and generate a locked, conflict-free requirements.txt
       run: |
-        # Use pip-compile to generate the requirements.txt with the correct, resolved versions
+        # Compile the requirements and generate a locked, conflict-free requirements.txt
         pip-compile --output-file=requirements.txt ./requirements.txt  # Path to your original requirements file
         cat requirements.txt  # Debugging step to ensure correct requirements are generated
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt  # Install the generated dependencies
+        pip install -r requirements.txt
