@@ -3,14 +3,15 @@ name: CI/CD Workflow
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   install:
-    runs-on: ubuntu-latest  # or whichever runner you prefer
+    runs-on: ubuntu-latest  # Or another OS depending on your environment
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -18,13 +19,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'  # Adjust based on the Python version you are using
+          python-version: '3.8'  # Ensure the version matches your project's Python version
 
       - name: Install dependencies
         run: |
-          pip install --no-cache-dir -r requirements.txt  # Ensures the dependencies are installed without cache to avoid issues
-          
-      - name: Run tests (or any other steps in your workflow)
+          pip install --no-cache-dir -r requirements.txt  # Install from updated requirements.txt
+
+      - name: Run tests (optional)
         run: |
-          # Run your tests or deployment steps here
-          pytest  # Example: you can replace it with your testing or deployment steps
+          pytest  # Or your specific tests/steps
