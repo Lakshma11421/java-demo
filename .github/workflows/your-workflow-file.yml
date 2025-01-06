@@ -13,23 +13,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.7'
-
-      - name: Install pip version <24.1
+      - name: Install Python 3.7
         run: |
-          python -m pip install --upgrade "pip<24.1"
+          sudo apt update
+          sudo apt install -y python3.7 python3.7-distutils python3-pip
+          python3.7 -m pip install --upgrade "pip<24.1"
 
-      - name: Install dependencies
+      - name: Set up Python 3.7 environment
         run: |
-          # Upgrade pip (to ensure it's compatible)
-          python -m pip install --upgrade pip
-          # Install dependencies from requirements.txt
-          pip install -r requirements.txt
+          python3.7 -m pip install -r requirements.txt
 
       - name: Run tests
         run: |
-          # Your test command here
-          python -m unittest discover
+          python3.7 -m unittest discover
