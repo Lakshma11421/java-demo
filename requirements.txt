@@ -6,7 +6,7 @@ azure-graphrbac
 azure-identity>=1.14.0
 azure-mgmt-authorization>=0.70.0
 azure-mgmt-containerregistry
-azure-mgmt-core>=2.0.0
+azure-mgmt-core>=1.5.0  # Updated this version
 azure-mgmt-keyvault
 azure-mgmt-resource
 azure-mgmt-storage>=19.0.0
