@@ -1,7 +1,7 @@
 adal
 applicationinsights
 azure-common>=1.1.25
-azure-core>=1.24.0
+azure-core>=1.32.0
 azure-graphrbac
 azure-identity>=1.14.0
 azure-mgmt-authorization>=0.70.0
@@ -143,7 +143,6 @@ smart-open
 smmap
 sortedcontainers
 statsmodels
-typing_extensions==3.7.4
 tabulate
 tblib
 termcolor
@@ -151,7 +150,7 @@ tenacity
 toolz
 tornado
 tqdm
-typing-extensions
+typing-extensions>=4.6.0
 urllib3
 waitress
 websocket-client
