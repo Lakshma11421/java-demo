@@ -130,7 +130,7 @@ rsa
 ruamel.yaml
 ruamel.yaml.clib
 s3transfer
-scikit-learn==1.1.1
+scikit-learn==1.5.1
 scipy>=1.9.3
 SecretStorage
 shap
