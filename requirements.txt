@@ -11,10 +11,10 @@ azure-mgmt-keyvault
 azure-mgmt-resource
 azure-mgmt-storage>=19.0.0
 azure-storage-queue
-azureml-automl-core==1.9.0  # Adjusted for compatibility
+azureml-automl-core>=1.9.0  # Ensuring compatibility with Python 3.9
 azureml-automl-runtime
-azureml-core>=1.0.0  # Make sure this is the latest compatible version with 1.9.x
-azureml-dataprep==1.9.3  # Ensuring compatible version for Python 3.9
+azureml-core>=1.0.0  # Ensure compatibility with Azure ML version 1.9.x
+azureml-dataprep==1.9.3  # Fixed version for Python 3.9 compatibility
 azureml-dataprep-native
 azureml-dataprep-rslex
 azureml-dataset-runtime==1.0.0
@@ -30,12 +30,11 @@ azureml-train-automl-runtime
 azureml-train-core
 azureml-train-restclients-hyperdrive
 azureml-training-tabular
+# Update below for compatibility:
 backports.tempfile
 backports.weakref
 bokeh
-boto
-boto3
-botocore
+boto3  # updated version
 cachetools
 certifi
 cffi
