@@ -1,6 +1,6 @@
 adal 
 applicationinsights
-zure-common 
+azure-common 
 azure-core
 azure-graphrbac
 azure-identity
