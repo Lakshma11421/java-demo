@@ -6,15 +6,15 @@ azure-graphrbac
 azure-identity>=1.14.0
 azure-mgmt-authorization>=0.70.0
 azure-mgmt-containerregistry
-azure-mgmt-core>=1.5.0  # Updated this version
+azure-mgmt-core>=1.5.0
 azure-mgmt-keyvault
 azure-mgmt-resource
 azure-mgmt-storage>=19.0.0
 azure-storage-queue
-azureml-automl-core==1.9.0
+azureml-automl-core>=1.9.0,<2.0.0  # Adjusted for compatibility
 azureml-automl-runtime
-azureml-core
-azureml-dataprep>=1.9.0,<1.10.0
+azureml-core>=1.39.0  # Make sure this is the latest compatible version with 1.9.x
+azureml-dataprep>=1.9.3,<2.0.0  # Ensuring compatible version for Python 3.9
 azureml-dataprep-native
 azureml-dataprep-rslex
 azureml-dataset-runtime==1.0.0
