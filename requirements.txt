@@ -11,9 +11,9 @@ azure-mgmt-keyvault
 azure-mgmt-resource
 azure-mgmt-storage>=19.0.0
 azure-storage-queue
-azureml-automl-core>=1.9.0,<2.0.0  # Adjusted for compatibility
+azureml-automl-core==1.9.0  # Adjusted for compatibility
 azureml-automl-runtime
-azureml-core>=1.39.0  # Make sure this is the latest compatible version with 1.9.x
+azureml-core>=1.0.0  # Make sure this is the latest compatible version with 1.9.x
 azureml-dataprep>=1.9.3,<2.0.0  # Ensuring compatible version for Python 3.9
 azureml-dataprep-native
 azureml-dataprep-rslex
