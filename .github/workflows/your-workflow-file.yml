@@ -1,53 +1,44 @@
-name: Python CI
+name: Python Compatibility Check
 
 on:
   push:
     branches:
-      - master  # Trigger on push to the master branch
-  workflow_dispatch:  # Allow manual trigger via GitHub UI
+      - main  # Trigger the action on push to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger the action on pull request to the main branch
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+
+    strategy:
+      matrix:
+        python-version: [3.7, 3.8, 3.9, 3.10]  # Testing across multiple Python versions
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2  # Checks out the repository
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.9'
+      # Step 2: Set up Python environment for each version in the matrix
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Upgrade pip to a compatible version
-      run: |
-        pip install --upgrade pip==23.1  # Enforce pip version 23.1
+      # Step 3: Install dependencies from `requirements.txt`
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip  # Upgrade pip to latest version
+          pip install -r requirements.txt  # Install dependencies from requirements.txt
 
-    - name: Set up Virtual Environment
-      run: |
-        python -m venv venv  # Create a virtual environment
-        source venv/bin/activate  # Activate the virtual environment
+      # Step 4: Check for any dependency conflicts
+      - name: Check package compatibility
+        run: |
+          pip check  # This will check if there are any conflicting packages
 
-    - name: List files in the repo  # Debugging step to list files
-      run: ls -R
-
-    - name: Install pip-tools
-      run: |
-        pip install pip-tools
-
-    - name: Compile the requirements and generate a locked, conflict-free requirements.txt
-      run: |
-        pip-compile --output-file=requirements.txt ./requirements.txt  # Path to your original requirements file
-        cat requirements.txt  # Debugging step to ensure correct requirements are generated
-
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-
-    - name: Check for dependency conflicts
-      run: |
-        pip check  # Check for any dependency conflicts after installation
-
-    - name: Verify installed packages
-      run: |
-        pip freeze  # Log the installed versions for debugging
+      # Step 5: Run tests (replace with your testing command if necessary)
+      - name: Run tests
+        run: |
+          pytest  # Replace with your testing command (e.g., `pytest` or `python -m unittest`)
