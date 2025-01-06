@@ -11,10 +11,10 @@ azure-mgmt-keyvault
 azure-mgmt-resource
 azure-mgmt-storage>=19.0.0
 azure-storage-queue
-azureml-automl-core==1.58.0
-azureml-automl-runtime
+azureml-automl-core==1.59.0
+azureml-automl-runtime==1.59.0
 azureml-core>=1.1.0  # Ensure compatibility with Azure ML version 1.0.0
-azureml-dataprep>=5.1.0a,<5.2.0a
+azureml-dataprep==5.1.0
 azureml-dataprep-native
 azureml-dataprep-rslex
 azureml-dataset-runtime==1.58.0
@@ -130,7 +130,7 @@ rsa
 ruamel.yaml
 ruamel.yaml.clib
 s3transfer
-scikit-learn==1.3.2
+scikit-learn==1.5.1
 scipy>=1.9.3
 SecretStorage
 shap
