@@ -1,31 +1,35 @@
-name: Python CI
+name: Python Application
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Check out repository
+      uses: actions/checkout@v2
 
-      - name: Install Python 3.7 from deadsnakes PPA
-        run: |
-          sudo apt update
-          sudo apt install -y software-properties-common
-          sudo add-apt-repository ppa:deadsnakes/ppa
-          sudo apt update
-          sudo apt install -y python3.7 python3.7-distutils python3-pip
-          python3.7 -m pip install --upgrade "pip<24.1"
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
 
-      - name: Set up Python environment
-        run: |
-          python3.7 -m pip install -r requirements.txt
+    - name: Check Python version
+      run: python --version
 
-      - name: Run tests
-        run: |
-          python3.7 -m unittest discover
+    - name: Clear pip cache
+      run: pip cache purge
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install --no-cache-dir -r requirements.txt
+
+    - name: Run tests
+      run: |
+        # Add your test run command here
+        python -m unittest discover tests/
