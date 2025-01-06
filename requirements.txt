@@ -143,6 +143,7 @@ smart-open
 smmap
 sortedcontainers
 statsmodels
+typing_extensions==3.7.4
 tabulate
 tblib
 termcolor
