@@ -1,35 +1,44 @@
-name: Python Compatibility Check
+name: Python CI
 
 on:
   push:
     branches:
-      - master
+      - master  # Trigger the workflow on pushes to the 'main' branch
   pull_request:
     branches:
-      - master
+      - master  # Also trigger for PRs targeting 'main'
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        python-version: [3.8, 3.9]  # Start with just two versions for debugging
+    runs-on: ubuntu-latest  # Specify the operating system for the runner
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    # Step 1: Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v2  # Fetch your repository code
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
+    # Step 2: Set up Python (specify the version you need, e.g., 3.8, 3.x, etc.)
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # You can specify a fixed version like '3.8'
 
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip  # Upgrade pip to the latest version
+        pip install -r requirements.txt  # Install the dependencies from requirements.txt
 
-      - name: Run tests with increased verbosity
-        run: |
-          pytest -v
+    # Step 4: Run tests (using pytest in this case, you can change this based on your testing framework)
+    - name: Run tests
+      run: |
+        pytest  # Replace with the appropriate command for your tests, e.g., 'python -m unittest'
+
+    # Optional: Cache Python dependencies to speed up future runs
+    - name: Cache Python dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip  # Cache pip dependencies
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}  # Cache key based on requirements.txt
+        restore-keys: |
+          ${{ runner.os }}-pip-
