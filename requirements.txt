@@ -17,7 +17,7 @@ azureml-core>=1.1.0  # Ensure compatibility with Azure ML version 1.0.0
 azureml-dataprep>=5.1.0a,<5.2.0a
 azureml-dataprep-native
 azureml-dataprep-rslex
-azureml-dataset-runtime>=1.59.0
+azureml-dataset-runtime==1.58.0
 azureml-defaults
 azureml-inference-server-http
 azureml-interpret
