@@ -48,7 +48,7 @@ contextlib2
 contextvars
 cryptography
 Cython
-dask>=2024.12.1,<2025
+dask>=2024.0.0,<2025.0.0
 databricks-cli
 dataclasses
 dill
