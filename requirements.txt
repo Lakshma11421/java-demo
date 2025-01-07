@@ -13,21 +13,21 @@ azure-mgmt-storage>=19.0.0
 azure-storage-queue
 azureml-automl-core==1.59.0
 azureml-automl-runtime==1.59.0
-azureml-core>=1.1.0  # Ensure compatibility with Azure ML version 1.0.0
+azureml-core==1.59.0  # Ensure compatibility with Azure ML version 1.0.0
 azureml-dataprep==5.1.0
 azureml-dataprep-native
 azureml-dataprep-rslex
-azureml-dataset-runtime==1.58.0
+azureml-dataset-runtime==1.59.0
 azureml-defaults
 azureml-inference-server-http
 azureml-interpret
 azureml-mlflow
 azureml-responsibleai
 azureml-telemetry
-azureml-train-automl
+azureml-train-automl==1.59.0
 azureml-train-automl-client
 azureml-train-automl-runtime
-azureml-train-core
+azureml-train-core==1.59.0
 azureml-train-restclients-hyperdrive
 azureml-training-tabular
 # Additional libraries with versions compatible with Python 3.9
